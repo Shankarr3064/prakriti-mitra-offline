@@ -18,19 +18,46 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'heading': ['Poppins', 'system-ui', 'sans-serif'],
+				'body': ['Open Sans', 'system-ui', 'sans-serif'],
+				'sans': ['Open Sans', 'system-ui', 'sans-serif']
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				
+				// Prakriti Mitra brand colors
+				saffron: {
+					DEFAULT: 'hsl(var(--saffron-primary))',
+					light: 'hsl(var(--saffron-light))',
+					dark: 'hsl(var(--saffron-dark))'
+				},
+				earth: {
+					DEFAULT: 'hsl(var(--earth-green))',
+					light: 'hsl(var(--earth-green-light))',
+					dark: 'hsl(var(--earth-green-dark))'
+				},
+				warning: {
+					DEFAULT: 'hsl(var(--warning-red))',
+					light: 'hsl(var(--warning-red-light))',
+					dark: 'hsl(var(--warning-red-dark))'
+				},
+				
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					hover: 'hsl(var(--primary-hover))',
+					active: 'hsl(var(--primary-active))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					foreground: 'hsl(var(--secondary-foreground))',
+					hover: 'hsl(var(--secondary-hover))',
+					active: 'hsl(var(--secondary-active))'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',

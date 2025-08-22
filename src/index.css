@@ -1,42 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Prakriti Mitra Design System - Built for India's Disaster Prediction Platform
+All colors MUST be HSL. Inspired by Indian identity and urgency of disaster response.
 */
 
 @layer base {
   :root {
+    /* Core brand colors for Prakriti Mitra */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 215 25% 16%;
+    
+    /* Prakriti Mitra Brand System */
+    --saffron-primary: 28 100% 60%;        /* Deep saffron #FF9933 - urgency & Indian identity */
+    --saffron-light: 28 95% 70%;           /* Lighter saffron for hover states */
+    --saffron-dark: 28 100% 45%;           /* Darker saffron for active states */
+    
+    --earth-green: 154 50% 35%;            /* Earth green #2E8B57 - nature & safety */
+    --earth-green-light: 154 45% 45%;      /* Lighter green for backgrounds */
+    --earth-green-dark: 154 55% 25%;       /* Darker green for emphasis */
+    
+    --warning-red: 0 100% 63%;             /* Warning red #FF4444 for critical alerts */
+    --warning-red-light: 0 100% 75%;       /* Light warning for backgrounds */
+    --warning-red-dark: 0 85% 50%;         /* Dark warning for urgent text */
+
+    /* Semantic tokens based on brand colors */
+    --primary: var(--saffron-primary);
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: var(--saffron-light);
+    --primary-active: var(--saffron-dark);
+
+    --secondary: var(--earth-green);
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: var(--earth-green-light);
+    --secondary-active: var(--earth-green-dark);
+
+    --accent: var(--earth-green-light);
+    --accent-foreground: var(--earth-green-dark);
+
+    --destructive: var(--warning-red);
+    --destructive-foreground: 0 0% 100%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: var(--foreground);
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: var(--foreground);
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --muted: 210 15% 96%;
+    --muted-foreground: 215 15% 46%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --border: 215 15% 88%;
+    --input: 215 15% 88%;
+    --ring: var(--saffron-primary);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+    
+    /* Custom gradients for impact */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--saffron-primary)), hsl(var(--earth-green)));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 15% 98%));
+    --gradient-alert: linear-gradient(90deg, hsl(var(--warning-red-light) / 0.1), hsl(var(--saffron-primary) / 0.1));
+    
+    /* Typography hierarchy */
+    --font-heading: 'Poppins', system-ui, sans-serif;
+    --font-body: 'Open Sans', system-ui, sans-serif;
+    
+    /* Elevation system */
+    --shadow-subtle: 0 1px 3px hsl(var(--saffron-primary) / 0.1);
+    --shadow-medium: 0 4px 12px hsl(var(--saffron-primary) / 0.15);
+    --shadow-elevated: 0 8px 32px hsl(var(--saffron-primary) / 0.2);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +134,89 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  /* Hero button variants for maximum impact */
+  .btn-hero {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 
+           px-8 py-4 rounded-lg font-semibold text-lg
+           shadow-medium hover:shadow-elevated
+           transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90
+           border border-secondary/20
+           px-6 py-3 rounded-lg font-medium
+           shadow-subtle hover:shadow-medium
+           transition-all duration-300;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground
+           px-6 py-3 rounded-lg font-medium
+           transition-all duration-300;
+  }
+  
+  /* Card variants for different sections */
+  .card-elevated {
+    @apply bg-white rounded-xl shadow-elevated border border-border/50
+           p-6 transition-all duration-300 hover:shadow-xl;
+  }
+  
+  .card-gradient {
+    @apply rounded-xl p-6 
+           bg-gradient-to-br from-white to-muted/30
+           border border-border/50 shadow-medium;
+  }
+  
+  .card-alert {
+    @apply rounded-lg p-4 
+           bg-gradient-to-r from-destructive/10 to-primary/10
+           border-l-4 border-destructive;
+  }
+  
+  /* Typography variants */
+  .heading-hero {
+    @apply text-4xl md:text-6xl lg:text-7xl font-bold 
+           bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent
+           leading-tight;
+  }
+  
+  .heading-section {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-foreground
+           leading-tight;
+  }
+  
+  .text-highlight {
+    @apply text-primary font-semibold;
+  }
+  
+  .text-warning {
+    @apply text-destructive font-medium;
+  }
+  
+  /* Interactive elements */
+  .hover-lift {
+    @apply transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-elevated;
+  }
+  
+  .pulse-primary {
+    @apply animate-pulse bg-primary/20 rounded-full;
+  }
+  
+  /* Background patterns */
+  .bg-topographic {
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--secondary) / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, hsl(var(--accent) / 0.03) 0%, transparent 50%);
   }
 }
