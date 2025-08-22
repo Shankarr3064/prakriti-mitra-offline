@@ -95,6 +95,11 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			boxShadow: {
+				'subtle': '0 1px 3px hsl(var(--saffron-primary) / 0.1)',
+				'medium': '0 4px 12px hsl(var(--saffron-primary) / 0.15)',
+				'elevated': '0 8px 32px hsl(var(--saffron-primary) / 0.2)'
+			},
 			keyframes: {
 				'accordion-down': {
 					from: {
